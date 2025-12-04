@@ -17,13 +17,13 @@ const int pinoEletrodo = 35;
 #define SENSOR_4 39
 
 // === CONFIG WI-FI ===
-const char* ssid = "CSI-Lab";
-const char* password = "In@teLCS&I";
+const char* ssid = "WLL-Inatel";
+const char* password = "inatelsemfio";
 
 // === CONFIG MQTT ===
 const char* mqtt_server = "test.mosquitto.org";
 const int mqttPort = 1883;
-const char* mqttTopicSub = "MechBerry/Irrigacao/#";
+const char* mqttTopicSub = "Estufa/Irrigacao/#";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -74,13 +74,13 @@ void callback(char* topic, byte* payload, unsigned int length) {
   Serial.print("Tópico: "); Serial.println(topic);
   Serial.print("Mensagem: "); Serial.println(msg);
 
-  if (strcmp(topic, "MechBerry/Irrigacao/Acionar") == 0) {
+  if (strcmp(topic, "Estufa/Irrigacao/Acionar") == 0) {
     digitalWrite(MOTOR_PIN, LOW);
     Serial.println("Motor LIGADO via MQTT");
     Blynk.virtualWrite(V1, 1);
   }
 
-  if (strcmp(topic, "MechBerry/Irrigacao/Desacionar") == 0) {
+  if (strcmp(topic, "Estufa/Irrigacao/Desacionar") == 0) {
     digitalWrite(MOTOR_PIN, HIGH);
     Serial.println("Motor DESLIGADO via MQTT");
     Blynk.virtualWrite(V1, 0);
@@ -91,7 +91,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
 void reconnect() {
   while (!client.connected()) {
     Serial.print("Conectando ao MQTT... ");
-    if (client.connect("ESP32-MechBerry")) {
+    if (client.connect("ESP32-Estufa")) {
       Serial.println("Conectado!");
       client.subscribe(mqttTopicSub);
     } else {
