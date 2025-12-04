@@ -1,6 +1,6 @@
 // === BLYNK ===
 #define BLYNK_TEMPLATE_ID "TMPL2EHUkuYqb"
-#define BLYNK_TEMPLATE_NAME "MecBerry"
+#define BLYNK_TEMPLATE_NAME "Estufa"
 #define BLYNK_AUTH_TOKEN "Kx9emv2mI-1yOLQ5GenOLfcmHUXt7H9d"
 
 #include <WiFi.h>
