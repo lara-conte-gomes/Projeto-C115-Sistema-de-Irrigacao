@@ -32,12 +32,12 @@ Desenvolvido por: Lara Conte Gomes e Lívia Cecília Gomes Silva
 
 - **Wi-Fi**:
   - SSID: `MechBerry`
-  - Senha: `H4x7Z:NF`
+  - Senha: 
 
 - **MQTT**:
-  - Servidor: `192.168.40.6`
+  - Servidor: `test.mpsquitto.org`
   - Porta: `1883`
-  - Tópico: `MechBerry/#`
+  - Tópico: `Estufa/Irrigacao/#`
 
 - **Calibração de Sensores**:
   - Valores mínimos (em água): `{1749, 1469, 1419, 1419}`
