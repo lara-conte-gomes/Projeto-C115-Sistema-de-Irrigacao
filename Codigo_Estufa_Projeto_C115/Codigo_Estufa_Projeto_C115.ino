@@ -77,7 +77,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
   if (strcmp(topic, "MechBerry/Irrigacao/Acionar") == 0) {
     digitalWrite(MOTOR_PIN, LOW);
     Serial.println("Motor LIGADO via MQTT");
-    Blynk.virtualWrite(V1, 1);  // atualiza o app
+    Blynk.virtualWrite(V1, 1);
   }
 
   if (strcmp(topic, "MechBerry/Irrigacao/Desacionar") == 0) {
@@ -132,7 +132,6 @@ void setup() {
   client.setServer(mqtt_server, mqttPort);
   client.setCallback(callback);
 
-  // === INICIA BLYNK ===
   Blynk.begin(BLYNK_AUTH_TOKEN, ssid, password);
 }
 
@@ -157,8 +156,18 @@ void loop() {
     Serial.print("Umid2: "); Serial.println(umid2);
     Serial.print("Umid4: "); Serial.println(umid4);
 
-    // ENVIO PARA O BLYNK — SEM CONFLITOS DE Vpins
-    Blynk.virtualWrite(V4, valorEletrodo);
+    // === CONTROLE DO LED PELO LDR ===
+    if (valorLDR > limiteLDR) {
+      digitalWrite(pinoLed, HIGH);
+      Serial.println("LED DESLIGADO (muita luz)");
+      
+    } else {
+      digitalWrite(pinoLed, LOW);
+      Serial.println("LED LIGADO (pouca luz)");
+    }
+
+    // ENVIO PARA O BLYNK
+    Blynk.virtualWrite(V8, valorEletrodo);
     Blynk.virtualWrite(V5, valorLDR);
     Blynk.virtualWrite(V6, umid2);
     Blynk.virtualWrite(V7, umid4);
