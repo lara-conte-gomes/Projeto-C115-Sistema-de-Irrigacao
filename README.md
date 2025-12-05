@@ -1,5 +1,7 @@
 # Projeto-C115-Sistema-de-Irrigação
 
+Link do Blynk: https://blynk.cloud/dashboard/289808/global/devices/1/organization/289808/devices/936690/dashboard
+
 Este repositório contém o código-fonte para um sistema de irrigação automatizado utilizando sensores de umidade, LDR, eletrodos e controle via Wi-Fi e MQTT. O projeto é dividido em dois arquivos principais, cada um com configurações específicas.
 
 Desenvolvido por: Lara Conte Gomes e Lívia Cecília Gomes Silva
